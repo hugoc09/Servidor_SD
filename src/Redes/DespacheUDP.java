@@ -1,4 +1,4 @@
-package Servidor;
+package Redes;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

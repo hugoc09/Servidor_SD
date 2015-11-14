@@ -1,4 +1,4 @@
-package Servidor;
+package Redes;
 
 import java.net.ServerSocket;
 import java.net.Socket;
