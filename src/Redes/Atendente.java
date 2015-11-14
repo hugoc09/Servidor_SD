@@ -17,7 +17,7 @@ public class Atendente implements Runnable{
 	private PrintStream out;
 	private ControleTraducao negocio;
 
-	
+	jj
 	private boolean inicializado;
 	private boolean executando;
 	
