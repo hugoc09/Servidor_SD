@@ -26,7 +26,7 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 			this.connection = ConnectionFactory.getConnection();
 
 			ps = connection.prepareStatement(sql);
-			ps.setLong(1, palavra.getContador());
+			ps.setInt(1, palavra.getContador());
 			ps.setString(2, palavra.getPalavra1());
 			ps.setString(3, palavra.getPalavra2());
 			ps.setString(4, palavra.getLinguagem1());
@@ -80,7 +80,7 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 			this.connection = ConnectionFactory.getConnection();
 
 			ps = connection.prepareStatement(sql);
-			ps.setLong(1, palavra.getContador()+1);
+			ps.setInt(1, palavra.getContador()+1);
 			ps.setString(2, palavra.getPalavra1());
 			ps.setString(3, palavra.getPalavra2());
 			ps.setString(4, palavra.getLinguagem1());
@@ -105,7 +105,7 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 		Palavra temp = new Palavra();
 		PreparedStatement ps = null;
 		ResultSet rs;
-		String sql = "SELECT * FROM PALAVRAS WHERE PALAVRA_PORTUGUES LIKE ?";
+		String sql = "SELECT * FROM PALAVRAS WHERE PALAVRA1 = ?";
 
 		try {
 			this.connection = ConnectionFactory.getConnection();
@@ -116,9 +116,9 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 
 			if (rs.next()) {
 				temp.setCodigo(rs.getLong("ID"));
-				temp.setContador(rs.getLong("CONTADOR"));
-				temp.setPalavra1(rs.getString("PALAVRA_PORTUGUES"));
-				temp.setPalavra2(rs.getString("PALAVRA_INGLES"));
+				temp.setContador(rs.getInt("CONTADOR"));
+				temp.setPalavra1(rs.getString("PALAVRA1"));
+				temp.setPalavra2(rs.getString("PALAVRA2"));
 				temp.setLinguagem1(rs.getString("LINGUAGEM1"));
 				temp.setLinguagem2(rs.getString("LINGUAGEM2"));
 			}
@@ -153,7 +153,7 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 			while (rs.next()) {
 				temp = new Palavra();
 				temp.setCodigo(rs.getLong("ID"));
-				temp.setContador(rs.getLong("CONTADOR"));
+				temp.setContador(rs.getInt("CONTADOR"));
 				temp.setPalavra1(rs.getString("PALAVRA1"));
 				temp.setPalavra2(rs.getString("PALAVRA2"));
 				temp.setLinguagem1(rs.getString("LINGUAGEM1"));

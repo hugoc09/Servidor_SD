@@ -5,14 +5,14 @@ public class Palavra {
 	private long codigo;
 	private String palavra1;
 	private String palavra2;
-	private long contador;
+	private int contador;
 	private String linguagem1;
 	private String linguagem2;
 	
 	
 
 	public Palavra(long codigo, String palavra1, String palavra2,
-			long contador, String linguagem1, String linguagem2) {
+			int contador, String linguagem1, String linguagem2) {
 		this.codigo = codigo;
 		this.palavra1 = palavra1;
 		this.palavra2 = palavra2;
@@ -48,11 +48,11 @@ public class Palavra {
 		this.palavra2 = palavra2;
 	}
 
-	public long getContador() {
+	public int getContador() {
 		return contador;
 	}
 
-	public void setContador(long contador) {
+	public void setContador(int contador) {
 		this.contador = contador;
 	}
 

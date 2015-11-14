@@ -3,6 +3,8 @@ package Negocios;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+import org.json.JSONException;
+
 import Entidades.Palavra;
 import Exceptions.ConexaoInexistenteException;
 import Exceptions.ErroInternoException;
@@ -28,7 +30,7 @@ public class Traducao implements ControleTraducao {
 	
 	@Override
 	public String pesquisar(String palavra1) {
-		Palavra p;
+		Palavra p = null;
 		String argumentos[] = palavra1.split(Pattern.quote(";"));
 		
 		Palavra palavra = new Palavra();
@@ -36,24 +38,41 @@ public class Traducao implements ControleTraducao {
 		palavra.setLinguagem1(argumentos[1]);
 		palavra.setLinguagem2(argumentos[2]);
 		
-		try {
-			
-			p = repPalavras.buscar(palavra.getPalavra1());
-			
-			repPalavras.atualizar(p);
-			
-		} catch (Exception e) {
+		
+			try {
+				p = repPalavras.buscar(palavra.getPalavra1());
+				if(p.getPalavra1()==null){
 
-			 try {
-				  
-					p = netWork.traduzir(palavra);
-					verifica(p);
-				} catch (Exception e2) {
+					try {
+						try {
+							p = netWork.traduzir(palavra);
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						verifica(p);
+					} catch (ErroInternoException | ConexaoInexistenteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
-					return "Servidor sem acesso a Rede";
+				}else{
+				repPalavras.atualizar(p);
 				}
+			} catch (ErroInternoException | ConexaoInexistenteException e) {
+				
+				e.printStackTrace();
+			}
 			
-		}
+				
+						
+					
+						
+						
+					
+			
+			
+				
 		
 		return p.getPalavra2();
 	}

@@ -5,5 +5,6 @@ public class ErroInternoException extends Exception {
 
 	public ErroInternoException(Throwable causa) {
 		super("Erro Interno: " + causa);
+		
 	}
 }
