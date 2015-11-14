@@ -83,21 +83,22 @@ public class Traducao implements ControleTraducao {
 		ArrayList<Palavra> palavras = new ArrayList<Palavra>();
 		palavras = (ArrayList<Palavra>) repPalavras.listaPalavras();
 		
-		if(palavras.size()<30){
+		if(palavras.size()<3){
 			repPalavras.adicionar(palavra);
 		}else{
 			
 			Palavra p = palavras.get(0);
 			
 			for(int i=0;i<palavras.size()-1;i++){
-				if(p.getContador() > palavras.get(i+1).getContador()){
+				if(p.getContador() >= palavras.get(i+1).getContador()){
 					p = palavras.get(i+1);	
 				}
 				
+			
+			}
 			repPalavras.remover(p);
 			repPalavras.adicionar(palavra);
 				
-			}
 		}
 	}
 	
