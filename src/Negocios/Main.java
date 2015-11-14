@@ -7,7 +7,7 @@ public class Main {
 		
 		ControleTraducao c = new Traducao();
 		
-		System.out.println(c.pesquisar("gato;pt;en;"));
+		System.out.println(c.pesquisar("panela;pt;en;"));
 	
 	}
 

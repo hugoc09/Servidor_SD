@@ -26,7 +26,7 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 			this.connection = ConnectionFactory.getConnection();
 
 			ps = connection.prepareStatement(sql);
-			ps.setInt(1, palavra.getContador());
+			ps.setInt(1, 1);
 			ps.setString(2, palavra.getPalavra1());
 			ps.setString(3, palavra.getPalavra2());
 			ps.setString(4, palavra.getLinguagem1());
