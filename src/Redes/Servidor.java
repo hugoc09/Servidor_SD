@@ -5,14 +5,13 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class Servidor implements Runnable {
 	
 	private ServerSocket serve;
 	
-	private List<Atendente> atendentes;//Não utilizamos para nada.
+	private List<Atendente> atendentes;
 	
 	private boolean inicializado;
 	private boolean executando;
@@ -20,7 +19,7 @@ public class Servidor implements Runnable {
 	private Thread thread;
 	
 	public Servidor(int porta) throws Exception{
-		atendentes = new ArrayList<Atendente>();//Não utilizamos para nada
+		atendentes = new ArrayList<Atendente>();
 		
 		inicializado = false;
 		executando = false;
@@ -34,7 +33,7 @@ public class Servidor implements Runnable {
 		
 	}
 	
-	private void close() {
+	public void close() {
 		
 		for(Atendente atendente: atendentes){
 			try {
@@ -95,7 +94,7 @@ public class Servidor implements Runnable {
 			Atendente atendente = new Atendente(socket);
 			atendente.start();
 			
-			atendentes.add(atendente);//Não utilizamos
+			atendentes.add(atendente);
 			
 			}catch(SocketTimeoutException e){
 				// ignorar
@@ -106,6 +105,14 @@ public class Servidor implements Runnable {
 		}
 		
 		close();
+	}
+
+	public List<Atendente> getAtendentes() {
+		return atendentes;
+	}
+
+	public void setAtendentes(List<Atendente> atendentes) {
+		this.atendentes = atendentes;
 	}
 
 }

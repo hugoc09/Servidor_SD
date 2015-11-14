@@ -8,5 +8,6 @@ public interface ControleTraducao{
 
 	public String pesquisar(String palavra1);
 	public void verifica(Palavra palavra)throws ErroInternoException, ConexaoInexistenteException;
+	public void close();
 	
 }

@@ -11,7 +11,7 @@ public class OuvindoUDP implements Runnable{
 	
 	private DatagramSocket servidorSocket;
 	
-	private List<DespacheUDP> despachantesUDP;//Não utilizamos
+	private List<DespacheUDP> despachantesUDP;
 	 
 	private DatagramPacket pkgRecebido;
 
@@ -21,7 +21,7 @@ public class OuvindoUDP implements Runnable{
 	private Thread  thread;
 	
 	public OuvindoUDP() throws Exception {
-		despachantesUDP = new ArrayList<DespacheUDP>();//Não utilizamos
+		despachantesUDP = new ArrayList<DespacheUDP>();
 		
 		inicializado = false;
 		executando   = false;

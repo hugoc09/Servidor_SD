@@ -3,8 +3,6 @@ package Negocios;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-import org.json.JSONException;
-
 import Entidades.Palavra;
 import Exceptions.ConexaoInexistenteException;
 import Exceptions.ErroInternoException;
@@ -23,7 +21,9 @@ public class Traducao implements ControleTraducao {
 	
 	public Traducao() throws Exception {
 		servidor = new Servidor(2525);
+		servidor.start();
 		ouvindoUDP = new OuvindoUDP();
+		ouvindoUDP.start();
 		repPalavras = new RepositorioPalavrasJDBC();
 		netWork = new NetworkManagement();
 	}
@@ -63,17 +63,7 @@ public class Traducao implements ControleTraducao {
 				
 				e.printStackTrace();
 			}
-			
 				
-						
-					
-						
-						
-					
-			
-			
-				
-		
 		return p.getPalavra2();
 	}
 
@@ -94,12 +84,32 @@ public class Traducao implements ControleTraducao {
 					p = palavras.get(i+1);	
 				}
 				
-			
 			}
 			repPalavras.remover(p);
 			repPalavras.adicionar(palavra);
 				
 		}
+	}
+
+	@Override
+	public void close() {
+		
+		try {
+			servidor.stop();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		try {
+			ouvindoUDP.stop();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		repPalavras = null;
+		
+		netWork = null;
+		
 	}
 	
 	
