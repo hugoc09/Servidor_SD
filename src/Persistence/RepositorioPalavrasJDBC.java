@@ -105,7 +105,7 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 		Palavra temp = new Palavra();
 		PreparedStatement ps = null;
 		ResultSet rs;
-		String sql = "SELECT * FROM PALAVRAS WHERE PALAVRA_PORTUGUES = ?";
+		String sql = "SELECT * FROM PALAVRAS WHERE PALAVRA_PORTUGUES LIKE ?";
 
 		try {
 			this.connection = ConnectionFactory.getConnection();
