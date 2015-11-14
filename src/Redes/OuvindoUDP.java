@@ -30,7 +30,7 @@ public class OuvindoUDP implements Runnable{
 	}
 	
 	private void open()throws Exception{
-		servidorSocket = new DatagramSocket(2526, InetAddress.getByName("0.0.0.0"));
+		servidorSocket = new DatagramSocket(2525, InetAddress.getByName("0.0.0.0"));
 		servidorSocket.setBroadcast(true);
 		
 		inicializado = true;
