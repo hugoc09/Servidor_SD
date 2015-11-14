@@ -7,7 +7,6 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 
 import Negocios.ControleTraducao;
-import Negocios.Traducao;
 
 public class Atendente implements Runnable{
 	
@@ -25,7 +24,7 @@ public class Atendente implements Runnable{
 	
 	public Atendente(Socket socket) throws Exception {
 		this.socket=socket;
-		this.negocio = new Traducao();
+		//this.negocio = new Traducao();
 		
 		inicializado = false;
 		executando =false;
