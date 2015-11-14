@@ -107,28 +107,5 @@ public class Servidor implements Runnable {
 		
 		close();
 	}
-	
-	public static void main(String[] args) throws Exception {
-		try {
-			System.out.println("Iniciando servidor.");
-			OuvindoUDP ouvindoUDP = new OuvindoUDP();
-			ouvindoUDP.start();
-			Servidor servidor = new Servidor(2525);
-			servidor.start();
-			
-			System.out.println("PRESSIONE <ENTER> para encerrar o Servidor.");
-			new Scanner(System.in).nextLine();
-			
-			
-			System.out.println("Encerrando servidor.");
-			servidor.stop();
-			ouvindoUDP.stop();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-	}
 
 }

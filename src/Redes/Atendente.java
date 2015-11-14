@@ -6,7 +6,8 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
-import Entidades.Palavras;
+import Negocios.ControleTraducao;
+import Negocios.Traducao;
 
 public class Atendente implements Runnable{
 	
@@ -14,6 +15,8 @@ public class Atendente implements Runnable{
 	
 	private BufferedReader in;
 	private PrintStream out;
+	private ControleTraducao negocio;
+
 	
 	private boolean inicializado;
 	private boolean executando;
@@ -22,6 +25,7 @@ public class Atendente implements Runnable{
 	
 	public Atendente(Socket socket) throws Exception {
 		this.socket=socket;
+		this.negocio = new Traducao();
 		
 		inicializado = false;
 		executando =false;
@@ -117,7 +121,8 @@ public class Atendente implements Runnable{
 					break;	
 				}
 				
-				out.println(pesquisar(palavra));
+				
+				out.println(negocio.pesquisar(palavra));
 					
 			} catch (SocketTimeoutException e) {
 				//Ignorar
@@ -129,25 +134,6 @@ public class Atendente implements Runnable{
 		System.out.println("Encerrando conexão!");
 		close();
 		
-	}
-	
-	public String pesquisar(String parametro) {
-		
-		Palavras palavra = new Palavras();
-		
-		int posisao = 0;
-		
-		for(int a = 0; a <= palavra.getPortugues().size()-1; a++){
-			
-			if(palavra.getPortugues().get(a).equalsIgnoreCase(parametro)){
-			posisao=a;
-			break;
-			}else if(a == palavra.getPortugues().size()-1){
-				return "Tradução não encontrada.";
-			}	
-		}
-			
-		return palavra.getIngles().get(posisao);
 	}
 
 }

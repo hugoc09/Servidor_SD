@@ -1,8 +1,8 @@
 package Persistence;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,7 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 		String sql = "INSERT INTO PALAVRAS (CONTADOR, PALAVRA1, PALAVRA2, LINGUAGEM1, LINGUAGEM2) VALUES (?,?,?,?,?)";
 
 		try {
+			
 			this.connection = ConnectionFactory.getConnection();
 
 			ps = connection.prepareStatement(sql);
@@ -103,7 +104,7 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 		
 		Palavra temp = new Palavra();
 		PreparedStatement ps = null;
-		java.sql.ResultSet rs;
+		ResultSet rs;
 		String sql = "SELECT * FROM PALAVRAS WHERE PALAVRA_PORTUGUES = ?";
 
 		try {
@@ -124,11 +125,13 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 
 			ps.close();
 			connection.close();
-
+			
+			
 			return temp;
-		} catch (ConexaoInexistenteException e) {
+			
+		}catch (ConexaoInexistenteException e) {
 			throw new ConexaoInexistenteException(e);
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			throw new ErroInternoException(e);
 		}
 	}
