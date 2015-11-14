@@ -12,23 +12,17 @@ import Redes.NetworkManagement;
 import Redes.OuvindoUDP;
 import Redes.Servidor;
 
-public class Traducao implements ControleTraducao {
+public class Traducao {
 	
-	private Servidor servidor;
-	private OuvindoUDP ouvindoUDP;
 	private RepositorioPalavras repPalavras;
 	private NetworkManagement netWork;
 	
-	public Traducao() throws Exception {
-		servidor = new Servidor(2525);
-		servidor.start();
-		ouvindoUDP = new OuvindoUDP();
-		ouvindoUDP.start();
+	public Traducao() {
 		repPalavras = new RepositorioPalavrasJDBC();
 		netWork = new NetworkManagement();
 	}
 	
-	@Override
+
 	public String pesquisar(String palavra1) {
 		Palavra p = null;
 		String argumentos[] = palavra1.split(Pattern.quote(";"));
@@ -67,7 +61,7 @@ public class Traducao implements ControleTraducao {
 		return p.getPalavra2();
 	}
 
-	@Override
+
 	public void verifica(Palavra palavra) throws ErroInternoException, ConexaoInexistenteException {
 		
 		ArrayList<Palavra> palavras = new ArrayList<Palavra>();
@@ -90,28 +84,5 @@ public class Traducao implements ControleTraducao {
 				
 		}
 	}
-
-	@Override
-	public void close() {
-		
-		try {
-			servidor.stop();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		
-		try {
-			ouvindoUDP.stop();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		
-		repPalavras = null;
-		
-		netWork = null;
-		
-	}
-	
-	
 
 }

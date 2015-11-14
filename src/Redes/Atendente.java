@@ -5,8 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-
-import Negocios.ControleTraducao;
+import Negocios.Traducao;
 
 public class Atendente implements Runnable{
 	
@@ -14,7 +13,7 @@ public class Atendente implements Runnable{
 	
 	private BufferedReader in;
 	private PrintStream out;
-	private ControleTraducao negocio;
+	private Traducao traducao;
 
 	
 	private boolean inicializado;
@@ -121,7 +120,7 @@ public class Atendente implements Runnable{
 				}
 				
 				
-				out.println(negocio.pesquisar(palavra));
+				out.println(traducao.pesquisar(palavra));
 					
 			} catch (SocketTimeoutException e) {
 				//Ignorar

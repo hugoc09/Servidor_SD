@@ -3,8 +3,7 @@ package Ui;
 
 import java.util.Scanner;
 
-import Negocios.ControleTraducao;
-import Negocios.Traducao;
+import Negocios.Control;
 
 public class Principal {
 	
@@ -12,7 +11,7 @@ public class Principal {
 		
 		try {
 			
-			ControleTraducao control = new Traducao();
+			Control control = new Control();
 			
 			System.out.println("PRESSIONE <ENTER> para encerrar o Servidor.");
 			new Scanner(System.in).nextLine();
