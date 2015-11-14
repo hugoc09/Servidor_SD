@@ -99,19 +99,21 @@ public class RepositorioPalavrasJDBC implements RepositorioPalavras {
 	}
 
 	@Override
-	public Palavra buscar(String palavra1) throws ErroInternoException,
+	public Palavra buscar(Palavra palavra1) throws ErroInternoException,
 			ConexaoInexistenteException {
 		
 		Palavra temp = new Palavra();
 		PreparedStatement ps = null;
 		ResultSet rs;
-		String sql = "SELECT * FROM PALAVRAS WHERE PALAVRA1 = ?";
+		String sql = "SELECT * FROM PALAVRAS WHERE PALAVRA1 = ? AND LINGUAGEM1 = ? AND LINGUAGEM2 = ?";
 
 		try {
 			this.connection = ConnectionFactory.getConnection();
 
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, palavra1);
+			ps.setString(1, palavra1.getPalavra1());
+			ps.setString(2, palavra1.getLinguagem1());
+			ps.setString(3, palavra1.getLinguagem2());
 			rs = ps.executeQuery();
 
 			if (rs.next()) {

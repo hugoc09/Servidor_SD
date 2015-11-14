@@ -40,7 +40,7 @@ public class Traducao implements ControleTraducao {
 		
 		
 			try {
-				p = repPalavras.buscar(palavra.getPalavra1());
+				p = repPalavras.buscar(palavra);
 				if(p.getPalavra1()==null){
 
 					try {
