@@ -8,5 +8,5 @@ public interface Control {
 	
 	public String pesquisar(String palavra1);
 	public void verifica(Palavra palavra) throws ErroInternoException, ConexaoInexistenteException;
-
+	public String ChecarServidor(Servidor servidor);
 }

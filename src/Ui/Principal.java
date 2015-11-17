@@ -13,16 +13,16 @@ public class Principal {
 		try {
 			Servidor servidor = new Servidor(2525);
 			servidor.start();
-			OuvindoUDP ouvindoUDP = new OuvindoUDP();
+			OuvindoUDP ouvindoUDP = new OuvindoUDP(servidor);
 			ouvindoUDP.start();
 			
 			
 			
-			System.out.println("PRESSIONE <ENTER> para encerrar o Servidor.");
+			System.out.println("PRESSIONE <ENTER> para encerrar o Servidor de Traduções.");
 			new Scanner(System.in).nextLine();
 			
 			
-			System.out.println("Encerrando servidor.");
+			System.out.println("Encerrando Servidor de Traduções.");
 			ouvindoUDP.stop();
 			servidor.stop();
 			

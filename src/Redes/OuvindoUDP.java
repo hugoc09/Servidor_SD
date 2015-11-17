@@ -4,14 +4,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class OuvindoUDP implements Runnable{
 	
 	private DatagramSocket servidorSocket;
-	
-	private List<DespacheUDP> despachantesUDP;
+	private Servidor servidor;
 	 
 	private DatagramPacket pkgRecebido;
 
@@ -20,8 +17,8 @@ public class OuvindoUDP implements Runnable{
 
 	private Thread  thread;
 	
-	public OuvindoUDP() throws Exception {
-		despachantesUDP = new ArrayList<DespacheUDP>();
+	public OuvindoUDP(Servidor servidorParametro) throws Exception {
+		this.servidor = servidorParametro;
 		
 		inicializado = false;
 		executando   = false;
@@ -33,19 +30,10 @@ public class OuvindoUDP implements Runnable{
 		servidorSocket = new DatagramSocket(2525, InetAddress.getByName("0.0.0.0"));
 		servidorSocket.setBroadcast(true);
 		
-		inicializado = true;
-		
+		inicializado = true;	
 	}
 	
 	private void close() {
-		
-		for(DespacheUDP despacheUDP: despachantesUDP){
-			try {
-				despacheUDP.stop();
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-		}
 		
 		try {
 			servidorSocket.close();
@@ -54,6 +42,7 @@ public class OuvindoUDP implements Runnable{
 		}
 		
 		servidorSocket = null;
+		servidor = null;
 		
 		inicializado = false;
 		executando = false;
@@ -95,12 +84,10 @@ public class OuvindoUDP implements Runnable{
 			
 			servidorSocket.receive(pkgRecebido);
 			
-			System.out.println("Pacote recebido.");
+			System.out.print("Ping DNS recebido!");
 			
-			DespacheUDP despacheUDP = new DespacheUDP(servidorSocket, pkgRecebido);
+			DespacheUDP despacheUDP = new DespacheUDP(servidorSocket, pkgRecebido, servidor);
 			despacheUDP.start();
-			
-			despachantesUDP.add(despacheUDP);
 			
 			}catch(SocketTimeoutException e){
 				// ignorar

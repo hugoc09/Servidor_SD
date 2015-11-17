@@ -10,6 +10,7 @@ import Persistence.RepositorioPalavras;
 import Persistence.RepositorioPalavrasJDBC;
 import Redes.Control;
 import Redes.NetworkManagement;
+import Redes.Servidor;
 
 public class Traducao implements Control{
 	
@@ -21,7 +22,7 @@ public class Traducao implements Control{
 		netWork = new NetworkManagement();
 	}
 	
-
+	@Override
 	public String pesquisar(String palavra1) {
 		Palavra p = null;
 		String argumentos[] = palavra1.split(Pattern.quote(";"));
@@ -60,7 +61,7 @@ public class Traducao implements Control{
 		return p.getPalavra2();
 	}
 
-
+	@Override
 	public void verifica(Palavra palavra) throws ErroInternoException, ConexaoInexistenteException {
 		
 		ArrayList<Palavra> palavras = new ArrayList<Palavra>();
@@ -82,6 +83,18 @@ public class Traducao implements Control{
 			repPalavras.adicionar(palavra);
 				
 		}
+	}
+
+
+	@Override
+	public String ChecarServidor(Servidor servidor) {
+		
+		if(servidor.getAtendentes().size() < 5){
+			return "Ola";
+		}
+		
+		
+		return null;
 	}
 
 }

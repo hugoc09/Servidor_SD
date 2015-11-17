@@ -3,10 +3,13 @@ package Redes;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
+import Negocios.Traducao;
+
 public class DespacheUDP implements Runnable{
 	
 	private DatagramSocket servidorSocket;
-	
+	private Servidor servidor;
+	private Control controle;
 	
 	private DatagramPacket pkgEnviado;
 	private DatagramPacket pkgRecebido;
@@ -16,9 +19,11 @@ public class DespacheUDP implements Runnable{
 
 	private Thread  thread;
 	
-	public DespacheUDP(DatagramSocket datagramSocket, DatagramPacket pkgRecebidoParamentro) {
+	public DespacheUDP(DatagramSocket datagramSocket, DatagramPacket pkgRecebidoParamentro, Servidor servidorParametro) {
 		this.servidorSocket = datagramSocket;
 		this.pkgRecebido = pkgRecebidoParamentro;
+		this.servidor = servidorParametro;
+		this.controle = new Traducao();
 		
 		inicializado = false;
 		executando =false;
@@ -69,10 +74,15 @@ public class DespacheUDP implements Runnable{
 		
 		try {
 			
-			String msgEnviada = "Aqui.";
+			String msgEnviada = controle.ChecarServidor(servidor);
+			
+			if(msgEnviada == null){
+			System.out.println("Servidor lotado!");
+			}else{
 			pkgEnviado = new DatagramPacket(msgEnviada.getBytes(),msgEnviada.length(), pkgRecebido.getAddress(), pkgRecebido.getPort());
 			servidorSocket.send(pkgEnviado);
-				
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
