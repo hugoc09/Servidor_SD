@@ -3,22 +3,29 @@ package Ui;
 
 import java.util.Scanner;
 
-import Negocios.Control;
+import Redes.OuvindoUDP;
+import Redes.Servidor;
 
 public class Principal {
 	
 	public static void main(String[] args) {
 		
 		try {
+			Servidor servidor = new Servidor(2525);
+			servidor.start();
+			OuvindoUDP ouvindoUDP = new OuvindoUDP();
+			ouvindoUDP.start();
 			
-			Control control = new Control();
+			
 			
 			System.out.println("PRESSIONE <ENTER> para encerrar o Servidor.");
 			new Scanner(System.in).nextLine();
 			
 			
 			System.out.println("Encerrando servidor.");
-			control.close();
+			ouvindoUDP.stop();
+			servidor.stop();
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -13,7 +13,7 @@ public class Atendente implements Runnable{
 	
 	private BufferedReader in;
 	private PrintStream out;
-	private Traducao traducao;
+	private Control controle;
 
 	
 	private boolean inicializado;
@@ -23,7 +23,7 @@ public class Atendente implements Runnable{
 	
 	public Atendente(Socket socket) throws Exception {
 		this.socket=socket;
-		//this.negocio = new Traducao();
+		this.controle = new Traducao();
 		
 		inicializado = false;
 		executando =false;
@@ -120,7 +120,7 @@ public class Atendente implements Runnable{
 				}
 				
 				
-				out.println(traducao.pesquisar(palavra));
+				out.println(controle.pesquisar(palavra));
 					
 			} catch (SocketTimeoutException e) {
 				//Ignorar

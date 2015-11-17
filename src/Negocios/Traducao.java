@@ -8,11 +8,10 @@ import Exceptions.ConexaoInexistenteException;
 import Exceptions.ErroInternoException;
 import Persistence.RepositorioPalavras;
 import Persistence.RepositorioPalavrasJDBC;
+import Redes.Control;
 import Redes.NetworkManagement;
-import Redes.OuvindoUDP;
-import Redes.Servidor;
 
-public class Traducao {
+public class Traducao implements Control{
 	
 	private RepositorioPalavras repPalavras;
 	private NetworkManagement netWork;
