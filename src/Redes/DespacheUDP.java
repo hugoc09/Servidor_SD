@@ -71,14 +71,14 @@ public class DespacheUDP implements Runnable{
 	public void run() {
 		
 		try {
-			
 			String msgEnviada = controle.ChecarServidor(servidor);
 			
-			if(msgEnviada == null){
-			System.out.println("Servidor lotado!");
-			}else{
+			if(msgEnviada!=null && !servidorSocket.isClosed()){
 			pkgEnviado = new DatagramPacket(msgEnviada.getBytes(),msgEnviada.length(), pkgRecebido.getAddress(), pkgRecebido.getPort());
-			servidorSocket.send(pkgEnviado);
+			servidorSocket.send(pkgEnviado);		
+			
+			}else{
+			System.out.println("Servidor lotado!");
 			}
 			
 		} catch (Exception e) {

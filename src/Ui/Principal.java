@@ -1,6 +1,5 @@
 package Ui;
 
-
 import java.util.Scanner;
 
 import Redes.OuvindoUDP;
@@ -23,8 +22,9 @@ public class Principal {
 			
 			
 			System.out.println("Encerrando Servidor de Traduções.");
-			ouvindoUDP.stop();
 			servidor.stop();
+			ouvindoUDP.stop();
+			
 			
 			
 		} catch (Exception e) {
