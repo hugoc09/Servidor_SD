@@ -32,20 +32,18 @@ public class DespacheUDP implements Runnable{
 	}
 	
 	private void open(){
-			
-		inicializado = true;	
+		inicializado = true;
+		
 	}
 
-	//NÃO ESTÁ SENDO USADO!
 	private void close() {
 		
-		try {
-			servidorSocket.close();
-		} catch (Exception e) {
-			System.out.println(e);			
-		}
+		this.servidorSocket = null;
+		this.servidor = null;
+		this.controle = null;
 		
-		servidorSocket = null;
+		inicializado = false;
+		executando =false;
 		
 		thread = null;
 	}
@@ -86,7 +84,8 @@ public class DespacheUDP implements Runnable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//close();
+		
+		close();
 	}
 
 }

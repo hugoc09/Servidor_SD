@@ -48,6 +48,8 @@ public class Atendente implements Runnable{
 	
 	private void close() {
 		
+		
+		
 		if(in == null){
 			try {
 				in.close();
@@ -76,6 +78,7 @@ public class Atendente implements Runnable{
 		in = null;
 		out = null;
 		socket = null;
+		controle = null;
 		
 		thread = null;
 	}
