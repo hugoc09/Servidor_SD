@@ -30,7 +30,6 @@ public class Servidor implements Runnable {
 	private void open(int porta)throws Exception{
 		serve = new ServerSocket(porta);
 		inicializado = true;
-		
 	}
 	
 	public void close() {

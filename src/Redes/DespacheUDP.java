@@ -15,7 +15,7 @@ public class DespacheUDP implements Runnable{
 	private DatagramPacket pkgRecebido;
 
 	private boolean inicializado;
-	private boolean executando;
+	//private boolean executando;
 
 	private Thread  thread;
 	
@@ -26,14 +26,13 @@ public class DespacheUDP implements Runnable{
 		this.controle = new Traducao();
 		
 		inicializado = false;
-		executando =false;
+		//executando =false;
 		
 		open();
 	}
 	
 	private void open(){
-		inicializado = true;
-		
+		inicializado = true;	
 	}
 
 	private void close() {
@@ -43,24 +42,24 @@ public class DespacheUDP implements Runnable{
 		this.controle = null;
 		
 		inicializado = false;
-		executando =false;
+		//executando =false;
 		
 		thread = null;
 	}
 	
 	public void start() {
-		if(!inicializado || executando){
+		if(!inicializado ){ //executando
 			return;
 		}
 		
-		executando = true;
+		//executando = true;
 		thread = new Thread(this);
 		thread.start();
 	}
 	
 	public void stop() throws Exception {
 		
-		executando = false;
+		//executando = false;
 		
 		if(thread!=null){
 		thread.join();
@@ -71,7 +70,7 @@ public class DespacheUDP implements Runnable{
 	public void run() {
 		
 		try {
-			String msgEnviada = controle.ChecarServidor(servidor);
+			String msgEnviada = controle.checarServidor(servidor);
 			
 			if(msgEnviada!=null && !servidorSocket.isClosed()){
 			pkgEnviado = new DatagramPacket(msgEnviada.getBytes(),msgEnviada.length(), pkgRecebido.getAddress(), pkgRecebido.getPort());

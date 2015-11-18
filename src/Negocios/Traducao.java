@@ -87,7 +87,7 @@ public class Traducao implements Control{
 
 
 	@Override
-	public String ChecarServidor(Servidor servidor) {
+	public String checarServidor(Servidor servidor) {
 		
 		if(servidor.getAtendentes().size() < 5){
 			return "Ola";
