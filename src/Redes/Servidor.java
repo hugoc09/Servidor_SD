@@ -10,8 +10,8 @@ import java.util.List;
 public class Servidor implements Runnable {
 	
 	private ServerSocket serve;
-	
-	private List<Atendente> atendentes;
+
+	public static  List<Atendente> atendentes;
 	
 	private boolean inicializado;
 	private boolean executando;
@@ -95,6 +95,10 @@ public class Servidor implements Runnable {
 			
 			atendentes.add(atendente);
 			
+			//teste
+			System.out.println(atendentes.size());
+			//teste
+			
 			}catch(SocketTimeoutException e){
 				// ignorar
 			}catch (Exception e) {
@@ -104,14 +108,6 @@ public class Servidor implements Runnable {
 		}
 		
 		close();
-	}
-
-	public List<Atendente> getAtendentes() {
-		return atendentes;
-	}
-
-	public void setAtendentes(List<Atendente> atendentes) {
-		this.atendentes = atendentes;
 	}
 
 }

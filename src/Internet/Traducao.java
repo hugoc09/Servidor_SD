@@ -1,4 +1,4 @@
-package util;
+package Internet;
 
 
 import java.io.BufferedReader;

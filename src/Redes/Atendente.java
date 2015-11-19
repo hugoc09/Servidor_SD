@@ -5,7 +5,8 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import Negocios.Traducao;
+
+import Negocios.Pesquisa;
 
 public class Atendente implements Runnable{
 	
@@ -22,8 +23,8 @@ public class Atendente implements Runnable{
 	private Thread thread;
 	
 	public Atendente(Socket socket) throws Exception {
-		this.socket=socket;
-		this.controle = new Traducao();
+		this.socket = socket;
+		this.controle = new Pesquisa();
 		
 		inicializado = false;
 		executando =false;
@@ -47,8 +48,6 @@ public class Atendente implements Runnable{
 	}
 	
 	private void close() {
-		
-		
 		
 		if(in == null){
 			try {
@@ -80,7 +79,23 @@ public class Atendente implements Runnable{
 		socket = null;
 		controle = null;
 		
+		inicializado = false;
+		executando = false;
+		
 		thread = null;
+		
+		try {
+			for(Atendente a: Servidor.atendentes){
+				
+				if(!a.executando){
+				Servidor.atendentes.remove(a);
+				}
+				
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void start() {

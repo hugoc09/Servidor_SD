@@ -3,9 +3,9 @@ package Redes;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-import Negocios.Traducao;
+import Negocios.Pesquisa;
 
-public class DespacheUDP implements Runnable{
+public class RespostaUDP implements Runnable{
 	
 	private DatagramSocket servidorSocket;
 	private Servidor servidor;
@@ -19,11 +19,11 @@ public class DespacheUDP implements Runnable{
 
 	private Thread  thread;
 	
-	public DespacheUDP(DatagramSocket datagramSocket, DatagramPacket pkgRecebidoParamentro, Servidor servidorParametro) {
+	public RespostaUDP(DatagramSocket datagramSocket, DatagramPacket pkgRecebidoParamentro, Servidor servidorParametro) {
 		this.servidorSocket = datagramSocket;
 		this.pkgRecebido = pkgRecebidoParamentro;
 		this.servidor = servidorParametro;
-		this.controle = new Traducao();
+		this.controle = new Pesquisa();
 		
 		inicializado = false;
 		//executando =false;

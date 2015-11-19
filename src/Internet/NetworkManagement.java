@@ -1,4 +1,4 @@
-package Redes;
+package Internet;
 
 
 import java.util.List;
@@ -6,11 +6,10 @@ import java.util.List;
 import org.json.JSONException;
 
 import Entidades.Palavra;
-import util.Traducao;
 
 public class NetworkManagement {
 
-	public static Palavra traduzir(Palavra p) throws JSONException, Exception {
+	public Palavra traduzir(Palavra p) throws JSONException, Exception {
 
 		String json = Traducao.getData(p);
 

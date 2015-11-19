@@ -86,8 +86,8 @@ public class OuvindoUDP implements Runnable{
 			
 			System.out.print("Ping DNS recebido!");
 			
-			DespacheUDP despacheUDP = new DespacheUDP(servidorSocket, pkgRecebido, servidor);
-			despacheUDP.start();
+			RespostaUDP respostaUDP = new RespostaUDP(servidorSocket, pkgRecebido, servidor);
+			respostaUDP.start();
 			
 			}catch(SocketTimeoutException e){
 				// ignorar

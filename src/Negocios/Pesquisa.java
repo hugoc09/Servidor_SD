@@ -6,18 +6,18 @@ import java.util.regex.Pattern;
 import Entidades.Palavra;
 import Exceptions.ConexaoInexistenteException;
 import Exceptions.ErroInternoException;
+import Internet.NetworkManagement;
 import Persistence.RepositorioPalavras;
 import Persistence.RepositorioPalavrasJDBC;
 import Redes.Control;
-import Redes.NetworkManagement;
 import Redes.Servidor;
 
-public class Traducao implements Control{
+public class Pesquisa implements Control{
 	
 	private RepositorioPalavras repPalavras;
 	private NetworkManagement netWork;
 	
-	public Traducao() {
+	public Pesquisa() {
 		repPalavras = new RepositorioPalavrasJDBC();
 		netWork = new NetworkManagement();
 	}
@@ -89,7 +89,7 @@ public class Traducao implements Control{
 	@Override
 	public String checarServidor(Servidor servidor) {
 		
-		if(servidor.getAtendentes().size() < 5){
+		if(Servidor.atendentes.size() < 5){
 			return "Ola";
 		}
 		
