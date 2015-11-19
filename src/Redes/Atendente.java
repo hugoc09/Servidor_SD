@@ -85,16 +85,28 @@ public class Atendente implements Runnable{
 		thread = null;
 		
 		try {
-			for(Atendente a: Servidor.atendentes){
-				
-				if(!a.executando){
-				Servidor.atendentes.remove(a);
-				}
-				
-			}	
+		for(int i = 0; i < Servidor.atendentes.size();i++){
+			
+			if(!Servidor.atendentes.get(i).executando){
+			Servidor.atendentes.remove(Servidor.atendentes.get(i));
+			}
+			
+		}	
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		e.printStackTrace();
+	}
+		
+		//try {
+			//for(Atendente a: Servidor.atendentes){
+				
+				//if(!a.executando){
+				//Servidor.atendentes.remove(a);
+				//}
+				
+			//}	
+		//} catch (Exception e) {
+			//e.printStackTrace();
+		//}
 		
 	}
 	
