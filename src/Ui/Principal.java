@@ -16,7 +16,6 @@ public class Principal {
 			ouvindoUDP.start();
 			
 			
-			
 			System.out.println("PRESSIONE <ENTER> para encerrar o Servidor de Traduções.");
 			new Scanner(System.in).nextLine();
 			
