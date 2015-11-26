@@ -24,7 +24,7 @@ public class Traducao {
 	public static final String URL_Language2 = "&target=";
 	/**
 	 * 
-	 * MÃ©todo que extraÃ­ de uma string JSON a palavra traduzida
+	 * Método que extraí de uma string JSON a palavra traduzida
 	 * 
 	 * @param String
 	 *            json
@@ -49,7 +49,7 @@ public class Traducao {
 
 	/**
 	 * 
-	 * MÃ©todo que utiliza de uma requisiÃ§Ã£o GET no serviÃ§o web para a traduÃ§Ã£o
+	 * Método que utiliza de uma requisição GET no serviço web para a tradução
 	 * da palavra
 	 * 
 	 * @param palavra
