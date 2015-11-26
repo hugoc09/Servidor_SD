@@ -1,7 +1,10 @@
 package Negocios;
 
+import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
+
+import org.json.JSONException;
 
 import Entidades.Palavra;
 import Exceptions.ConexaoInexistenteException;
@@ -41,13 +44,12 @@ public class Pesquisa implements Control{
 						try {
 							p = netWork.traduzir(palavra);
 						} catch (Exception e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
+							
+							//System.out.println("Aqui 1");
 						}
 						verifica(p);
 					} catch (ErroInternoException | ConexaoInexistenteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						System.out.println("Servidor sem conexão com a internet");
 					}
 					
 				}else{

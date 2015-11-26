@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -67,11 +68,23 @@ public class Traducao {
 			conn.setRequestMethod("GET");
 			conn.setDoOutput(false);
 			conn.setDoInput(true);
-			conn.connect();
+			try {
+				conn.connect();	
+			} catch (Exception e) {
+				//throw  new ConnectException();
+			}
+			BufferedReader lines = null;
+			InputStream is = null;
+			
+			try {
+				 is = conn.getInputStream();
+				 lines = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
-			InputStream is = conn.getInputStream();
-			BufferedReader lines = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-
+			} catch (Exception e) {
+				//throw  new ConnectException();
+				//System.out.println("Aqui 3");
+			}
+			
 			String s;
 			while (true) {
 
