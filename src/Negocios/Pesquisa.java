@@ -41,15 +41,16 @@ public class Pesquisa implements Control{
 				if(p.getPalavra1()==null){
 
 					try {
+						
 						try {
 							p = netWork.traduzir(palavra);
 						} catch (Exception e1) {
 							
-							//System.out.println("Aqui 1");
+							System.out.println("Servidor sem conexão com a internet");
 						}
 						verifica(p);
 					} catch (ErroInternoException | ConexaoInexistenteException e1) {
-						System.out.println("Servidor sem conexão com a internet");
+						System.out.println("Erro na Persistencia do Servidor");
 					}
 					
 				}else{
@@ -81,9 +82,12 @@ public class Pesquisa implements Control{
 				}
 				
 			}
+			if(palavra.getPalavra2()!=null){
 			repPalavras.remover(p);
 			repPalavras.adicionar(palavra);
-				
+			}else{
+				System.out.println("Servidor sem conexão com a net");
+			}
 		}
 	}
 
