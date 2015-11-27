@@ -47,6 +47,7 @@ public class Pesquisa implements Control{
 						} catch (Exception e1) {
 							
 							System.out.println("Servidor sem conexão com a internet");
+							return "Servidor sem Conexão";
 						}
 						verifica(p);
 					} catch (ErroInternoException | ConexaoInexistenteException e1) {
@@ -82,12 +83,10 @@ public class Pesquisa implements Control{
 				}
 				
 			}
-			if(palavra.getPalavra2()!=null){
+			
 			repPalavras.remover(p);
 			repPalavras.adicionar(palavra);
-			}else{
-				System.out.println("Servidor sem conexão com a net");
-			}
+			
 		}
 	}
 
