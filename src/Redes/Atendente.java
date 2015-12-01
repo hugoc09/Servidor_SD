@@ -149,7 +149,7 @@ public class Atendente implements Runnable{
 					break;	
 				}
 				
-				
+				System.out.println("Vishh");
 				out.println(controle.pesquisar(palavra));
 					
 			} catch (SocketTimeoutException e) {
