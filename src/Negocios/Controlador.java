@@ -33,8 +33,8 @@ public class Controlador implements ControlServidor{
 try {
 	
 			System.out.println("Encerrando Servidor de Traduções...");
-			servidor.stop();
 			ouvindoUDP.stop();
+			servidor.stop();
 			System.out.println("Servidor de Traduções encerrado!");
 			
 			

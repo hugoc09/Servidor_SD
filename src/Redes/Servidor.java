@@ -11,7 +11,7 @@ public class Servidor implements Runnable {
 	
 	private ServerSocket serve;
 
-	public static  List<Atendente> atendentes;
+	private  List<Atendente> atendentes;
 	
 	private boolean inicializado;
 	private boolean executando;
@@ -75,7 +75,27 @@ public class Servidor implements Runnable {
 		}
 	}
 	
+	public List<Atendente> getAtendentes() {
+		return atendentes;
+	}
+
+	public void setAtendentes(List<Atendente> atendentes) {
+		this.atendentes = atendentes;
+	}
 	
+	public int atualizaList(){
+		
+		for(Atendente a: atendentes){
+			
+			if(!a.getStatus()){
+				atendentes.remove(a);
+			}
+			
+		}
+		
+		return atendentes.size();
+	}
+
 	public void run() {
 		System.out.println("Aguardadando conexao...");
 		
@@ -96,7 +116,7 @@ public class Servidor implements Runnable {
 			atendentes.add(atendente);
 			
 			//teste
-			System.out.println(atendentes.size());
+			System.out.println(atualizaList());
 			//teste
 			
 			}catch(SocketTimeoutException e){
@@ -105,6 +125,9 @@ public class Servidor implements Runnable {
 				System.out.println(e);
 				return;
 			}
+			
+			
+			
 		}
 		
 		close();

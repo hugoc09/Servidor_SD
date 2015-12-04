@@ -86,14 +86,12 @@ public class Pesquisa implements Control{
 		}
 	}
 
-
 	@Override
 	public String checarServidor(Servidor servidor) {
 		
-		if(Servidor.atendentes.size() < 5){
+		if(servidor.getAtendentes().size() < 2){
 			return "Ola";
 		}
-		
 		
 		return null;
 	}

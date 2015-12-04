@@ -19,6 +19,7 @@ public class Atendente implements Runnable{
 	
 	private boolean inicializado;
 	private boolean executando;
+	private boolean status;
 	
 	private Thread thread;
 	
@@ -26,8 +27,9 @@ public class Atendente implements Runnable{
 		this.socket = socket;
 		this.controle = new Pesquisa();
 		
+		status = false;
 		inicializado = false;
-		executando =false;
+		executando = false;
 		
 		open();
 	}
@@ -38,6 +40,7 @@ public class Atendente implements Runnable{
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new PrintStream(socket.getOutputStream());
 			inicializado = true;
+			status = true;
 			
 		} catch (Exception e) {
 			
@@ -81,20 +84,21 @@ public class Atendente implements Runnable{
 		
 		inicializado = false;
 		executando = false;
+		status = false;
 		
 		thread = null;
 		
-		try {
-		for(int i = 0; i < Servidor.atendentes.size();i++){
+		//try {
+		//for(int i = 0; i < Servidor.atendentes.size();i++){
 			
-			if(!Servidor.atendentes.get(i).executando){
-			Servidor.atendentes.remove(Servidor.atendentes.get(i));
-			}
+			//if(!Servidor.atendentes.get(i).executando){
+			//Servidor.atendentes.remove(Servidor.atendentes.get(i));
+			//}
 			
-		}	
-		} catch (Exception e) {
-		e.printStackTrace();
-	}
+		//}	
+		//} catch (Exception e) {
+		//e.printStackTrace();
+		//}
 		
 		//try {
 			//for(Atendente a: Servidor.atendentes){
@@ -128,7 +132,15 @@ public class Atendente implements Runnable{
 		thread.join();
 		}
 	}
-	
+
+	public boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	@Override
 	public void run() {
 		
@@ -149,7 +161,6 @@ public class Atendente implements Runnable{
 					break;	
 				}
 				
-				System.out.println("Vishh");
 				out.println(controle.pesquisar(palavra));
 					
 			} catch (SocketTimeoutException e) {
