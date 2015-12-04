@@ -33,17 +33,14 @@ public class Pesquisa implements Control{
 		palavra.setLinguagem1(argumentos[1]);
 		palavra.setLinguagem2(argumentos[2]);
 		
-		
+		if(!palavra.getLinguagem1().equals(palavra.getLinguagem2())){
 			try {
 				p = repPalavras.buscar(palavra);
 				if(p.getPalavra1()==null){
-
 					try {
-						
 						try {
 							p = netWork.traduzir(palavra);
-						} catch (Exception e1) {
-							
+						} catch (Exception e1) {	
 							System.out.println("Servidor sem conexão com a internet");
 							return "Servidor sem Conexão";
 						}
@@ -51,13 +48,14 @@ public class Pesquisa implements Control{
 					} catch (ErroInternoException | ConexaoInexistenteException e1) {
 						System.out.println("Erro na Persistencia do Servidor");
 					}
-					
 				}else{
 				repPalavras.atualizar(p);
 				}
 			} catch (ErroInternoException | ConexaoInexistenteException e) {
 				
 				e.printStackTrace();
+			}}else{
+				return "Idiomas iguais";
 			}
 				
 		return p.getPalavra2();
