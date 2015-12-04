@@ -1,10 +1,8 @@
 package Negocios;
 
-import java.net.ConnectException;
+
 import java.util.ArrayList;
 import java.util.regex.Pattern;
-
-import org.json.JSONException;
 
 import Entidades.Palavra;
 import Exceptions.ConexaoInexistenteException;
