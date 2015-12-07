@@ -25,7 +25,6 @@ public class Controlador implements ControlServidor{
 			e.printStackTrace();
 		}	
 		
-		
 	}
 
 	@Override
