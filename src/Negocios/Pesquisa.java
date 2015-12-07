@@ -42,7 +42,7 @@ public class Pesquisa implements Control{
 							p = netWork.traduzir(palavra);
 						} catch (Exception e1) {	
 							System.out.println("Servidor sem conexão com a internet");
-							return "Servidor sem Conexão com a Internet";
+							return "sServidor sem Conexão com a Internet";
 						}
 						verifica(p);
 					} catch (ErroInternoException | ConexaoInexistenteException e1) {
