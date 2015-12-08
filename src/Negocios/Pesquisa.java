@@ -33,6 +33,7 @@ public class Pesquisa implements Control{
 		palavra.setLinguagem1(argumentos[1]);
 		palavra.setLinguagem2(argumentos[2]);
 		
+		if(!palavra.getPalavra1().equals("")){
 		if(!palavra.getLinguagem1().equals(palavra.getLinguagem2())){
 			try {
 				p = repPalavras.buscar(palavra);
@@ -57,7 +58,11 @@ public class Pesquisa implements Control{
 			}}else{
 				return "Idiomas iguais";
 			}
-				
+		}else{
+			return "Nenhuma Palavra foi digitada";
+		}	
+		
+		
 		return p.getPalavra2();
 	}
 
