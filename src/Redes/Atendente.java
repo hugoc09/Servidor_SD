@@ -140,7 +140,7 @@ public class Atendente implements Runnable{
 				out.println(controle.pesquisar(palavra));
 					
 			} catch (SocketTimeoutException e) {
-				//Ignorar
+				
 			}catch (Exception e) {
 				System.out.println("Cliente se desligou inesperadamente");
 			break;	

@@ -70,7 +70,7 @@ public class Traducao {
 			try {
 				conn.connect();	
 			} catch (Exception e) {
-				//throw  new ConnectException();
+				
 			}
 			BufferedReader lines = null;
 			InputStream is = null;
@@ -80,8 +80,7 @@ public class Traducao {
 				 lines = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
 			} catch (Exception e) {
-				//throw  new ConnectException();
-				//System.out.println("Aqui 3");
+				
 			}
 			
 			String s;

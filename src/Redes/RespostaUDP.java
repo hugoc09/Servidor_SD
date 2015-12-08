@@ -15,7 +15,7 @@ public class RespostaUDP implements Runnable{
 	private DatagramPacket pkgRecebido;
 
 	private boolean inicializado;
-	//private boolean executando;
+	
 
 	private Thread  thread;
 	
@@ -26,7 +26,7 @@ public class RespostaUDP implements Runnable{
 		this.controle = new Pesquisa();
 		
 		inicializado = false;
-		//executando =false;
+		
 		
 		open();
 	}
