@@ -14,7 +14,7 @@ public class ConnectionFactory {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tradutor", "root", "123");
 			
-			System.out.println("Conexão Bem-Sucedida");
+			System.out.println("< Conexao Bem Sucedida >");
 		} catch (Exception e) {
 			throw new ConexaoInexistenteException(e);
 		}

@@ -107,26 +107,22 @@ public class Servidor implements Runnable {
 			
 			Socket socket = serve.accept();
 			
-			System.out.println("Conexao estabelecida.");
+			System.out.println("Conexao estabelecida!");
 		
 			
 			Atendente atendente = new Atendente(socket);
 			atendente.start();
 			
 			atendentes.add(atendente);
-			
-			//teste
+
 			System.out.println(atualizaList());
-			//teste
 			
 			}catch(SocketTimeoutException e){
 				// ignorar
 			}catch (Exception e) {
 				System.out.println(e);
 				return;
-			}
-			
-			
+			}	
 			
 		}
 		

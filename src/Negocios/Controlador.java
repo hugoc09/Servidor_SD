@@ -19,7 +19,6 @@ public class Controlador implements ControlServidor{
 		servidor.start();
 		ouvindoUDP = new OuvindoUDP(servidor);
 		ouvindoUDP.start();
-		System.out.println("Servidor de Traduções inicializado!");
 		
 		} catch (Exception e) {
 			e.printStackTrace();

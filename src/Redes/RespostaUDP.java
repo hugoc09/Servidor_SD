@@ -77,14 +77,14 @@ public class RespostaUDP implements Runnable{
 			servidorSocket.send(pkgEnviado);		
 			
 			}else{
-			System.out.println("Servidor lotado!");
+			System.out.println("< Servidor Lotado >");
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		close();
+		
 	}
 
 }

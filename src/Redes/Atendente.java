@@ -88,30 +88,6 @@ public class Atendente implements Runnable{
 		
 		thread = null;
 		
-		//try {
-		//for(int i = 0; i < Servidor.atendentes.size();i++){
-			
-			//if(!Servidor.atendentes.get(i).executando){
-			//Servidor.atendentes.remove(Servidor.atendentes.get(i));
-			//}
-			
-		//}	
-		//} catch (Exception e) {
-		//e.printStackTrace();
-		//}
-		
-		//try {
-			//for(Atendente a: Servidor.atendentes){
-				
-				//if(!a.executando){
-				//Servidor.atendentes.remove(a);
-				//}
-				
-			//}	
-		//} catch (Exception e) {
-			//e.printStackTrace();
-		//}
-		
 	}
 	
 	public void start() {
@@ -157,7 +133,7 @@ public class Atendente implements Runnable{
 				"]:" +
 				palavra);
 				
-				if ("FIM".equalsIgnoreCase(palavra)){ //MODIFICADO
+				if ("FIM".equalsIgnoreCase(palavra)){
 					break;	
 				}
 				
@@ -170,9 +146,9 @@ public class Atendente implements Runnable{
 			break;	
 			}	
 		}
+		
 		System.out.println("Encerrando conexão!");
 		close();
-		
 	}
 
 }

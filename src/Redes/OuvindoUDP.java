@@ -71,7 +71,6 @@ public class OuvindoUDP implements Runnable{
 	@Override
 	public void run() {
 		
-	//System.out.println("Aguardadando conexao...");
 	byte[] dadosRecebidos = new byte[1024];
 	
 		while(executando){
@@ -84,7 +83,7 @@ public class OuvindoUDP implements Runnable{
 			
 			servidorSocket.receive(pkgRecebido);
 			
-			System.out.println("Ping DNS recebido!");
+			System.out.println("< Ping DNS >");
 			
 			RespostaUDP respostaUDP = new RespostaUDP(servidorSocket, pkgRecebido, servidor);
 			respostaUDP.start();
@@ -98,7 +97,6 @@ public class OuvindoUDP implements Runnable{
 		}
 		
 		close();
-		
 	}
 	
 }
