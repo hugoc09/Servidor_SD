@@ -16,7 +16,6 @@ public class Principal {
 			new Scanner(System.in).nextLine();
 			
 			control.parar();
-	
 		
 	}
 
