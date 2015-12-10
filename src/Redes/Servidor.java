@@ -85,9 +85,10 @@ public class Servidor implements Runnable {
 	
 	public int atualizaList(){
 		
-		for(Atendente a: atendentes){
-			
-			if(!a.getStatus()){
+		for(int a=0; a<atendentes.size(); a++){
+		//for(Atendente a: atendentes){
+			if(!atendentes.get(a).getStatus()){
+			//if(!a.getStatus()){
 				atendentes.remove(a);
 			}
 			
