@@ -115,15 +115,19 @@ public class Servidor implements Runnable {
 			
 			atendentes.add(atendente);
 
-			System.out.println(atualizaList());
+			//System.out.println(atualizaList()); 
 			
 			}catch(SocketTimeoutException e){
+				
+			//System.out.println(atualizaList());
 				// ignorar
 			}catch (Exception e) {
 				System.out.println(e);
 				return;
 			}	
 			
+			System.out.println(atualizaList()); //Testar essa parada!!!
+												//URGENTE!!!!!!!!!!!!
 		}
 		
 		close();

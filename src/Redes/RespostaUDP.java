@@ -15,9 +15,8 @@ public class RespostaUDP implements Runnable{
 	private DatagramPacket pkgRecebido;
 
 	private boolean inicializado;
-	
 
-	private Thread  thread;
+	private Thread thread;
 	
 	public RespostaUDP(DatagramSocket datagramSocket, DatagramPacket pkgRecebidoParamentro, Servidor servidorParametro) {
 		this.servidorSocket = datagramSocket;
@@ -26,7 +25,6 @@ public class RespostaUDP implements Runnable{
 		this.controle = new Pesquisa();
 		
 		inicializado = false;
-		
 		
 		open();
 	}
@@ -42,24 +40,21 @@ public class RespostaUDP implements Runnable{
 		this.controle = null;
 		
 		inicializado = false;
-		//executando =false;
+		
 		
 		thread = null;
 	}
 	
 	public void start() {
-		if(!inicializado ){ //executando
+		if(!inicializado ){ 
 			return;
 		}
 		
-		//executando = true;
 		thread = new Thread(this);
 		thread.start();
 	}
 	
 	public void stop() throws Exception {
-		
-		//executando = false;
 		
 		if(thread!=null){
 		thread.join();

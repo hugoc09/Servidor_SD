@@ -33,9 +33,9 @@ public class Pesquisa implements Control{
 		palavra.setLinguagem1(argumentos[1]);
 		palavra.setLinguagem2(argumentos[2]);
 		
-		if(!palavra.getPalavra1().contains(" ")){
-		if(!palavra.getPalavra1().equals("")){
-		if(!palavra.getLinguagem1().equals(palavra.getLinguagem2())){
+		if(!palavra.getPalavra1().contains(" ")){ // PALAVRA COMPOSTA
+		if(!palavra.getPalavra1().equals("")){  //CAMPO VAZIO
+		if(!palavra.getLinguagem1().equals(palavra.getLinguagem2())){ //LINGUAGENS IGUAIS
 			try {
 				p = repPalavras.buscar(palavra);
 				if(p.getPalavra1()==null){
